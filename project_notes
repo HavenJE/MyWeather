@@ -83,3 +83,10 @@ on console, do: params
 how to tell the params what is permitted and what is not to? 
 a. you make a private method on the controller file => def user_params 
 
+part 2 link 
+https://www.youtube.com/watch?v=rK_PV3_tuhA&ab_channel=JenniferHansen
+
+here, - rails g rescourse session - has been created with a home.html.erb on views has been created under sessions. 
+Now, working on login/logout, starting with creating the logout first 
+
+

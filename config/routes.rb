@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  resources :sessions
 # Write your custom routes below: 
 
+  # root route for home page 
+  root 'sessions#home'
+  
+  # signup routes
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
@@ -8,5 +13,5 @@ Rails.application.routes.draw do
   resources :categories
   resources :users
   resources :locations
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ 
 end
