@@ -4,6 +4,9 @@ Created the app with:
 To start the app postgresql server: 
 sudo service postgresql start
 
+part 1: JenniferHansen link 
+https://www.youtube.com/watch?v=825w5S69J38&t=3292s&ab_channel=JenniferHansen
+
 Models are: 
 
 1. Locations = Posts    joining table = categories & users - *any modal that has 2 belongs_to 
@@ -52,3 +55,31 @@ Models are:
 
 if you going to use; rails g resource, you could check what options it gives you when you use the --help e.g. 
 => rails g resource --help 
+
+@32:51, we finished adding all the associations in the models - next step is; rails db:migrate 
+
+next step: go to console and make sure you can make things with; 
+=> rails c OR 
+you could use; 
+=> rails c -s 
+this will create any data only in the console environment without adding these data to the db 
+
+While in the console, if you created a variable e.g. l = Location.create(title: "New Location") - and you got a sign says; RELEASE SAVEPOINT active_record_1 => this means there is an error 
+
+To check what's the error, do; 
+=> variable.errors e.g. if the variable is l for location do: 
+=> l.errors 
+
+@40:00, to have our user model up and running, we need to add has_secure_password added to the model 
+then uncomment gem 'bcrypt', '~> 3.1.7' on Gemfile 
+you can add gem 'pry' if you want to use pry on console 
+- once you done, do => bundle 
+
+@43:00, we create our routes for signup => '/signup' 
+
+@55:32, the binding.pry finally worked! 
+on console, do: params 
+
+how to tell the params what is permitted and what is not to? 
+a. you make a private method on the controller file => def user_params 
+

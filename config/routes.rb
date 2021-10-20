@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+# Write your custom routes below: 
+
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+
   resources :comments
   resources :categories
   resources :users
