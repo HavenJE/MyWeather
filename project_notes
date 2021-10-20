@@ -1,0 +1,6 @@
+Created the app with:
+=> rails new MyWeather --database=postgresql
+
+To start the app postgresql server: 
+sudo service postgresql start
+
