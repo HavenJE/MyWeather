@@ -4,3 +4,51 @@ Created the app with:
 To start the app postgresql server: 
 sudo service postgresql start
 
+Models are: 
+
+1. Locations = Posts    joining table = categories & users - *any modal that has 2 belongs_to 
+    belongs_to :user
+    belongs_to :category 
+    has_many :users, through: :categories
+    has_many :comments 
+    
+    attribues:
+    title :text 
+    content :text 
+
+    rails g resource location title:text content:text user:belongs_to category:belongs_to 
+
+2. Users                
+    has_many :locations 
+    has_many :categories, through: :locations 
+    has_many :comments 
+    #has_many :commented_locations, through: :comments
+
+    attribues: 
+    username :string 
+    email :string
+    password_digest :string
+
+    rails g resource user username email password_digest
+
+3. Categories  
+     
+    has_many :locations 
+    has_many :users, through: :locations 
+
+    attribues:
+    name
+
+    rails g resource category name:text 
+
+4. Comments  joining table = locations & users - *any modal that has 2 belongs_to 
+    belongs_to :user
+    belongs_to :location  
+
+    attribues:
+    content 
+
+    rails g resource comment content user:belongs_to location:belongs_to
+
+if you going to use; rails g resource, you could check what options it gives you when you use the --help e.g. 
+=> rails g resource --help 
