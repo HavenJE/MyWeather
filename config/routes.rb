@@ -4,6 +4,13 @@ Rails.application.routes.draw do
 
   # root route for home page 
   root 'sessions#home'
+
+  #login route 
+  get '/login' => 'sessions#new' # this route displays the login page 
+  post '/login' => 'sessions#create' # this route processes the login information 
+
+  #logout route 
+  delete '/logout' => 'sessions#destroy'
   
   # signup routes
   get '/signup' => 'users#new'
