@@ -89,4 +89,9 @@ https://www.youtube.com/watch?v=rK_PV3_tuhA&ab_channel=JenniferHansen
 here, - rails g rescourse session - has been created with a home.html.erb on views has been created under sessions. 
 Now, working on login/logout, starting with creating the logout first 
 
+@5:49, we finished adding the routes 
+then - added the logout link on the user show page - this requires later on to add the show method on user_controller. 
+then - adding the def desotry method on the sessions_controller 
 
+@18:46, now we adding a new.html page on sessions views with login h1 tag - then we added the form_for 
+then - we added a link_to login in the home.html page on sessions views 

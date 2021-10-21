@@ -16,8 +16,9 @@ class UsersController < ApplicationController
 
     def show 
         # @user = User.find(params[:id]) # if can't find user, it will cause an error!
+        redirect_if_not_logged_in
         @user = User.find_by_id(params[:id]) # if can't find user, it would return nil 
-        redirect_to '/' if !@user # redirect user to home page if is not a user 
+        redirect_to root_path if !@user # redirect user to home page if is not a user 
     end 
 
     private 
