@@ -14,6 +14,17 @@
     <div>
       <% if logged_in? %>
       <br>
+
+      <%= link_to "Add a Forecast Location", new_location_path %> |
+       
+      <%= link_to "Check All Forecast Locations", locations_path %> |
+      <br> 
+
+      <%= link_to "Add a Comment", new_comment_path %> |
+
+      <% link_to "Check All Comments", comments_path %>
+      <br> 
+
       <%= link_to "Logout", logout_path, method: "delete" %> 
 
       <% else %> 
@@ -25,6 +36,15 @@
       <br>
 
       <% end %> 
+
+      <div>
+        <% if flash[:message] %>
+
+          <%= flash[:message] %> 
+
+        <% end %>
+        <%= @error %> 
+      </div>
       
     </div>
     <%= yield %>

@@ -1,0 +1,35 @@
+<% if @comment.location %>
+    <h2> New Comment for: <% @comment.location.title %> </h2> 
+<% else %>
+    <h2> New Comment %> 
+<% end %> 
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+    <ul>
+      <% @comment.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for(@comment.location, @comment) do |f| %>
+    <% if !@comment.location %> 
+        <%= f.label :location %> 
+        <%= f.collection_select :location_id, Location.all, :id, :title %> 
+    <% else %> 
+        <%= f.hidden_field :location_id %> 
+    <% end %> 
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+    <br> 
+    <br> 
+
+    <%= f.submit "Submit"  %> 
+
+<% end %>

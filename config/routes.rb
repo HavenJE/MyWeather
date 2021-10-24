@@ -16,11 +16,27 @@ Rails.application.routes.draw do
   #logout route 
   delete '/logout' => 'sessions#destroy' # called it delete as we are deleting the session to log out - also, so that the user can't view it in the browser bar 
   
+  # Omniauth callback route 
+  get '/auth/google_oauth2/callback' => 'sessions#google'
+  # get "/auth/ :provider/callback" can use this in case you want to use more than one omniauth 
  
+  
+  resources :users do 
+    resources :locations, only: [:new, :create, :index] # shallow routing can be written shallow: true
+  end 
+
+  resources :locations do 
+    resources :comments
+  end
 
   resources :comments
   resources :categories
-  resources :users
-  resources :locations
   resources :sessions
 end
+
+# Possible nested routes are: 
+# For '/users'
+# '/users/:id/posts'
+
+# For '/locations'
+# 'locations/:id/comments'

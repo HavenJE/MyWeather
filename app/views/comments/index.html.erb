@@ -1,0 +1,27 @@
+<h2> All Comments </h2> 
+
+<% if @comments.empty? %>
+    <h2> No Comments has been listed yet. Create one <%= link_to "here", new_comment_path %> </h2>
+<% else %> 
+    <ol>   
+        <% @comments.each do |e| %>
+                
+            <li> <strong> <%= @user.username %> says: : </strong> <%= e.content %> </li> 
+            <br> 
+   
+            <% link_to "Edit Comment", '/locations/:id/edit' %>
+            <br>
+             
+            <strong> Category: </strong> <%= e.category.name %> 
+            <br>
+            
+            <% link_to "Edit Category", '/categories/:id/edit' %>
+            <br>
+                
+            <%= button_to "Delete Record", [e, @category], method: :delete %>
+            <br>
+            <br>
+
+        <% end %> 
+    </ol> 
+<% end %>

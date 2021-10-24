@@ -95,3 +95,9 @@ then - adding the def desotry method on the sessions_controller
 
 @18:46, now we adding a new.html page on sessions views with login h1 tag - then we added the form_for 
 then - we added a link_to login in the home.html page on sessions views 
+
+part 3 - working on nested routes 
+https://www.youtube.com/watch?v=2h3RsWm5Xas&ab_channel=JenniferHansen
+
+nested routes are done in models that have has_many relationships 
+@10:06, when we do shallow routing, e.g. '/users/:id/posts' => its crucial that we supply the /:id/ of the parent route e.g. '/users'
