@@ -1,0 +1,18 @@
+<h1> <%= @location.title %> </h1> 
+<h2> <%= @location.user.username %> </h2>
+
+<div> <%= @location.content %> </div>
+
+<p> <%= link_to "All Comment", loction_comments_path(@location) </p>
+<p> <%= link_to "Add a new comment", new_loction_comment_path(@location) </p>
+
+<h3> Comments: </h3> 
+<% @location.comments.each do |c| %>
+
+<li> 
+    <strong> 
+        <%= c.user.username %> says: <%= link_to c.content, comment_path(c) %> 
+    </strong>  
+</li> 
+
+<% end %> 

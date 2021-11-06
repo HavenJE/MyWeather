@@ -1,0 +1,9 @@
+
+[1mFrom:[0m /home/haven/development/code/phase_5_Final_Project/MyWeather/app/controllers/sessions_controller.rb:15 SessionsController#destroy:
+
+    [1;34m14[0m: [32mdef[0m [1;34mdestroy[0m
+ => [1;34m15[0m:     binding.pry 
+    [1;34m16[0m:     [1;34m# session.destroy[0m
+    [1;34m17[0m:     [1;34m# redirect_to root_path # root_path is the same to '/'[0m
+    [1;34m18[0m: [32mend[0m 
+

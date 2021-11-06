@@ -1,0 +1,30 @@
+<h2> All Forecast Locations </h2> 
+
+<% if @locations.empty? %>
+    <h2> No Forecast location has been listed yet. Create one <%= link_to "here", new_location_path %> </h2>
+<% else %> 
+    <ol>   
+        <% @locations.each do |e| %>
+                
+            <li> <strong> Location Name: </strong> <%= e.title %>  </li> 
+            <br> 
+
+            <strong> Description: </strong> <%= e.content %>
+            <br>
+                
+            <% link_to "Edit Location", '/locations/:id/edit' %>
+            <br>
+             
+            <strong> Category: </strong> <%= e.category.name %> 
+            <br>
+            
+            <% link_to "Edit Category", '/categories/:id/edit' %>
+            <br>
+                
+            <%= button_to "Delete Record", [e, @category], method: :delete %>
+            <br>
+            <br>
+
+        <% end %> 
+    </ol> 
+<% end %>

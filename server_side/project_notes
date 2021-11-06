@@ -1,0 +1,107 @@
+Created the app with:
+=> rails new MyWeather --database=postgresql
+
+To start the app postgresql server: 
+sudo service postgresql start
+
+part 1: JenniferHansen link 
+https://www.youtube.com/watch?v=825w5S69J38&t=3292s&ab_channel=JenniferHansen
+
+Models are: 
+
+1. Locations = Posts    joining table = categories & users - *any modal that has 2 belongs_to 
+    belongs_to :user
+    belongs_to :category 
+    has_many :users, through: :categories
+    has_many :comments 
+    
+    attribues:
+    title :text 
+    content :text 
+
+    rails g resource location title:text content:text user:belongs_to category:belongs_to 
+
+2. Users                
+    has_many :locations 
+    has_many :categories, through: :locations 
+    has_many :comments 
+    #has_many :commented_locations, through: :comments
+
+    attribues: 
+    username :string 
+    email :string
+    password_digest :string
+
+    rails g resource user username email password_digest
+
+3. Categories  
+     
+    has_many :locations 
+    has_many :users, through: :locations 
+
+    attribues:
+    name
+
+    rails g resource category name:text 
+
+4. Comments  joining table = locations & users - *any modal that has 2 belongs_to 
+    belongs_to :user
+    belongs_to :location  
+
+    attribues:
+    content 
+
+    rails g resource comment content user:belongs_to location:belongs_to
+
+if you going to use; rails g resource, you could check what options it gives you when you use the --help e.g. 
+=> rails g resource --help 
+
+@32:51, we finished adding all the associations in the models - next step is; rails db:migrate 
+
+next step: go to console and make sure you can make things with; 
+=> rails c OR 
+you could use; 
+=> rails c -s 
+this will create any data only in the console environment without adding these data to the db 
+
+While in the console, if you created a variable e.g. l = Location.create(title: "New Location") - and you got a sign says; RELEASE SAVEPOINT active_record_1 => this means there is an error 
+
+To check what's the error, do; 
+=> variable.errors e.g. if the variable is l for location do: 
+=> l.errors 
+
+@40:00, to have our user model up and running, we need to add has_secure_password added to the model 
+then uncomment gem 'bcrypt', '~> 3.1.7' on Gemfile 
+you can add gem 'pry' if you want to use pry on console 
+- once you done, do => bundle 
+
+@43:00, we create our routes for signup => '/signup' 
+
+@55:32, the binding.pry finally worked! 
+on console, do: params 
+
+how to tell the params what is permitted and what is not to? 
+a. you make a private method on the controller file => def user_params 
+
+part 2 link 
+https://www.youtube.com/watch?v=rK_PV3_tuhA&ab_channel=JenniferHansen
+
+here, - rails g rescourse session - has been created with a home.html.erb on views has been created under sessions. 
+Now, working on login/logout, starting with creating the logout first 
+
+@5:49, we finished adding the routes 
+then - added the logout link on the user show page - this requires later on to add the show method on user_controller. 
+then - adding the def desotry method on the sessions_controller 
+
+@18:46, now we adding a new.html page on sessions views with login h1 tag - then we added the form_for 
+then - we added a link_to login in the home.html page on sessions views 
+
+part 3 - working on nested routes 
+https://www.youtube.com/watch?v=2h3RsWm5Xas&ab_channel=JenniferHansen
+
+nested routes are done in models that have has_many relationships 
+@10:06, when we do shallow routing, e.g. '/users/:id/posts' => its crucial that we supply the /:id/ of the parent route e.g. '/users'
+
+
+JSON API data access link: https://dev.to/davidnnussbaum/the-examination-of-a-json-document-utilizing-ruby-a-step-by-step-guide-2l3m
+
