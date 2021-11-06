@@ -20,7 +20,7 @@ URL = ("https://api.weatherbit.io/v2.0/forecast/minutely?city=Charlotte,NC&key=1
 
 def api_info
     uri = URI.parse(URL)
-    response = Net::HTTP.get_response(uri)
+    response = Net::HTTP.get_response(uri)    
     response.body
     locations_info = JSON.parse(file)
     locations_info.each do |location|
